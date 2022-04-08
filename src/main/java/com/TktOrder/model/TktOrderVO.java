@@ -2,18 +2,20 @@ package com.TktOrder.model;
 
 import java.sql.Timestamp;
 
-public class TktOrder {
+public class TktOrderVO {
 	private Integer tktOrderId;
 	private Integer custId;
 	private Integer originalPrice;
 	private Timestamp orderDate;
 	private Integer ttlPrice;
 	private Integer custCopId;
+	private String qrCode;
 
-	public TktOrder() {
+	public TktOrderVO() {
 	}
 
-	public TktOrder(Integer tktOrderId, Integer custId, Integer originalPrice, Timestamp orderDate, Integer ttlPrice, Integer custCopId) {
+	public TktOrderVO(Integer tktOrderId, Integer custId, Integer originalPrice, Timestamp orderDate, Integer ttlPrice,
+			Integer custCopId, String qrCode) {
 		super();
 		this.tktOrderId = tktOrderId;
 		this.custId = custId;
@@ -21,6 +23,7 @@ public class TktOrder {
 		this.orderDate = orderDate;
 		this.ttlPrice = ttlPrice;
 		this.custCopId = custCopId;
+		this.qrCode = qrCode;
 	}
 
 	public Integer getTktOrderId() {
@@ -71,10 +74,20 @@ public class TktOrder {
 		this.custCopId = custCopId;
 	}
 
+	public String getQrCode() {
+		return qrCode;
+	}
+
+	public void setQrCode(String qrCode) {
+		this.qrCode = qrCode;
+	}
+
 	@Override
 	public String toString() {
-		return "TktOrder [tktOrderId=" + tktOrderId + ", custId=" + custId + ", originalPrice=" + originalPrice
-				+ ", orderDate=" + orderDate + ", ttlPrice=" + ttlPrice + ", custCopId=" + custCopId + "]";
+		return "TktOrderVO [tktOrderId=" + tktOrderId + ", custId=" + custId + ", originalPrice=" + originalPrice
+				+ ", orderDate=" + orderDate + ", ttlPrice=" + ttlPrice + ", custCopId=" + custCopId + ", qrCode="
+				+ qrCode + "]";
 	}
+
 
 }

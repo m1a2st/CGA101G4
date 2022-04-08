@@ -2,13 +2,13 @@ package com.Faq.model;
 
 import java.sql.Timestamp;
 
-public class Faq {
+public class FaqVO {
 	private Integer faqId;
 	private String title;
 	private String content;
 	private Timestamp createDate;
 	
-	public Faq(Integer faqId, String title, String content, Timestamp createDate) {
+	public FaqVO(Integer faqId, String title, String content, Timestamp createDate) {
 		super();
 		this.faqId = faqId;
 		this.title = title;
@@ -16,7 +16,7 @@ public class Faq {
 		this.createDate = createDate;
 	}
 	
-	public Faq() {
+	public FaqVO() {
 		super();
 	}
 

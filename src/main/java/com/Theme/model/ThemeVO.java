@@ -2,7 +2,7 @@ package com.Theme.model;
 
 import java.sql.Timestamp;
 
-public class Theme {
+public class ThemeVO {
 
 	private Integer themeId;
 	private String title;
@@ -10,11 +10,11 @@ public class Theme {
 	private Timestamp createDate;
 	private String img;
 
-	public Theme() {
+	public ThemeVO() {
 		super();
 	}
 
-	public Theme(Integer themeId, String title, String content, Timestamp createDate, String img) {
+	public ThemeVO(Integer themeId, String title, String content, Timestamp createDate, String img) {
 		super();
 		this.themeId = themeId;
 		this.title = title;

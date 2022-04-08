@@ -2,16 +2,16 @@ package com.News.model;
 
 import java.sql.Timestamp;
 
-public class News {
-	private int newsId;
+public class NewsVO {
+	private Integer newsId;
 	private String title;
 	private String content;
 	private Timestamp createDate;
 	private String img;
-	public News() {
+	public NewsVO() {
 		super();
 	}
-	public News(int newsId, String title, String content, Timestamp createDate, String img) {
+	public NewsVO(Integer newsId, String title, String content, Timestamp createDate, String img) {
 		super();
 		this.newsId = newsId;
 		this.title = title;
@@ -22,7 +22,7 @@ public class News {
 	public int getNewsId() {
 		return newsId;
 	}
-	public void setNewsId(int newsId) {
+	public void setNewsId(Integer newsId) {
 		this.newsId = newsId;
 	}
 	public String getTitle() {
@@ -40,7 +40,7 @@ public class News {
 	public Timestamp getCreateDate() {
 		return createDate;
 	}
-	public void setDate(Timestamp createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 	public String getImg() {

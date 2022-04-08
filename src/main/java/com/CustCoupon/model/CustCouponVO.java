@@ -2,7 +2,7 @@ package com.CustCoupon.model;
 
 import java.sql.Timestamp;
 
-public class CustCoupon {
+public class CustCouponVO {
 	private Integer custCopId;
 	private Integer custId;
 	private Integer copId;
@@ -11,11 +11,11 @@ public class CustCoupon {
 	private Integer roomOrderId;
 	private Integer discount;
 
-	public CustCoupon() {
+	public CustCouponVO() {
 		super();
 	}
 
-	public CustCoupon(Integer custCopId, Integer custId, Integer copId, Timestamp getDate, Timestamp useDate, Integer roomOrderId, Integer discount) {
+	public CustCouponVO(Integer custCopId, Integer custId, Integer copId, Timestamp getDate, Timestamp useDate, Integer roomOrderId, Integer discount) {
 		super();
 		this.custCopId = custCopId;
 		this.custId = custId;

@@ -1,16 +1,16 @@
 package com.Cart.model;
 
-public class Cart {
+public class CartVO {
 	private Integer tktId;
 	private Integer custId;
 	
-	public Cart(Integer tktId, Integer custId) {
+	public CartVO(Integer tktId, Integer custId) {
 		super();
 		this.tktId = tktId;
 		this.custId = custId;
 	}
 	
-	public Cart() {
+	public CartVO() {
 		super();
 	}
 

@@ -1,6 +1,6 @@
 package com.TktItem.model;
 
-public class TktItem {
+public class TktItemVO {
 	private Integer tktId;
 	private Integer tktOrderId;
 	private Integer amount;
@@ -8,10 +8,10 @@ public class TktItem {
 	private Integer score;
 	private String content;
 
-	public TktItem() {
+	public TktItemVO() {
 	}
 
-	public TktItem(Integer tktId, Integer tktOrderId, Integer amount, Integer used, Integer score, String content) {
+	public TktItemVO(Integer tktId, Integer tktOrderId, Integer amount, Integer used, Integer score, String content) {
 		super();
 		this.tktId = tktId;
 		this.tktOrderId = tktOrderId;

@@ -1,18 +1,18 @@
 package com.TktImg.model;
 
-public class TktImg {
+public class TktImgVO {
 	private Integer tktImgId;
 	private String img;
 	private Integer tktId;
 	
-	public TktImg(Integer tktImgId, String img, Integer tktId) {
+	public TktImgVO(Integer tktImgId, String img, Integer tktId) {
 		super();
 		this.tktImgId = tktImgId;
 		this.img = img;
 		this.tktId = tktId;
 	}
 	
-	public TktImg() {
+	public TktImgVO() {
 		super();
 	}
 
