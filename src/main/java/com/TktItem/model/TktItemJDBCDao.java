@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.plugins.tiff.GeoTIFFTagSet;
-
 import com.DbHelper.Dbhelper;
 
 public class TktItemJDBCDao implements TktItem_interface {

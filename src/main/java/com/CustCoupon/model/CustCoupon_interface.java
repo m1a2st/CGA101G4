@@ -5,18 +5,16 @@ import java.util.List;
 
 public interface CustCoupon_interface {
 	//穝糤兵纔磃ㄩ
-	public boolean insertCustCoupon(CustCouponVO custCoupon);
+	public boolean insertCustCoupon(CustCouponVO obj);
 	//琩高琘┮局Τ纔磃ㄩ
-	public List<CustCouponVO> queryCustCouponById(Integer customerId);
-	//琩高琘ㄏノ纔磃ㄩ
-	public List<CustCouponVO> queryCustCouponUsedById(Integer customerId,String status);
-	//琩高琘ゼㄏノ纔磃ㄩ
-	public List<CustCouponVO> queryCustCouponUnusedById(Integer customerId,String status);
+	public List<CustCouponVO> queryCustCouponById(Integer custId);
+	//琩高琘ㄏノ(ゼㄏノ)(筁戳)纔磃ㄩ
+	public List<CustCouponVO> queryCustCouponUsedById(Integer custId,String status);
 	//эㄏノ纔磃ㄩ篈(癸布ㄩ)
-	public boolean updateCustCouponStatusByTktOrderId(Integer tktOrderId,String status);
+	public boolean updateCustCouponStatusByTktOrderId(Integer custId,Integer tktOrderId,String status);
 	//эㄏノ纔磃ㄩ篈(癸璹┬)
-	public boolean updateCustCouponStatusByRoomOrderId(Integer roomOrderId,String status);
-	//ㄏノ戳筁τэ纔磃ㄩ篈
-	public boolean updateCustCouponStatusByEnddate(Timestamp enddate,String status);
+	public boolean updateCustCouponStatusByRoomOrderId(Integer custId,Integer roomOrderId,String status);
+	//ㄏノ戳筁τэ纔磃ㄩ篈(ゼЧΘJoin)
+	public boolean updateCustCouponStatusByEnddate(Integer custId,Timestamp enddate,String status);
 
 }
