@@ -27,7 +27,7 @@ public class TktOrderJDBCDao implements TktOrder_interface {
 			prep.setString(5, obj.getQrCode());
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			if (conn != null) {

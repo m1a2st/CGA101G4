@@ -11,13 +11,13 @@ import java.util.List;
 import com.DbHelper.Dbhelper;
 
 public class NewsJDBCDao implements News_interface {
-	private static Connection conn = Dbhelper.getConnection();
 
 	@Override
 	public boolean insertNews(NewsVO obj) {
 		int count = 0;
 		String sql = "insert into NEWS(title,content,img) values(?,?,?);";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection(); 
+				PreparedStatement prep = conn.prepareStatement(sql);) {
 			prep.setString(1, obj.getTitle());
 			prep.setString(2, obj.getContent());
 			prep.setString(3, obj.getImg());
@@ -26,14 +26,6 @@ public class NewsJDBCDao implements News_interface {
 			System.out.println("success " + count);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return count != 0;
 	}
@@ -42,7 +34,8 @@ public class NewsJDBCDao implements News_interface {
 	public List<NewsVO> queryAllNews() {
 		List<NewsVO> ls = new ArrayList<NewsVO>();
 		String sql = "select news_id,title,content,create_date,img from NEWS;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
 				Integer newsId = (Integer) rs.getInt("news_id");
@@ -53,18 +46,10 @@ public class NewsJDBCDao implements News_interface {
 				NewsVO newsVO = new NewsVO(newsId, title, content, createDate, img);
 				ls.add(newsVO);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		} 
 		return ls;
 	}
 
@@ -72,7 +57,8 @@ public class NewsJDBCDao implements News_interface {
 	public NewsVO queryNewsById(Integer newsId) {
 		NewsVO newsVO = new NewsVO();
 		String sql = "select news_id,title,content,create_date,img from NEWS where news_id=?;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setInt(1, newsId);
 			ResultSet rs = prep.executeQuery();
 			if (rs.next()) {
@@ -83,19 +69,10 @@ public class NewsJDBCDao implements News_interface {
 				;
 				newsVO.setImg(rs.getString("img"));
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		} 
 		return newsVO;
 	}
 
@@ -103,7 +80,8 @@ public class NewsJDBCDao implements News_interface {
 	public List<NewsVO> queryNewsByTitle(String title) {
 		List<NewsVO> ls = new ArrayList<NewsVO>();
 		String sql = "select news_id,title,content,create_date,img from NEWS where title like ?;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setString(1, "%" + title + "%");
 			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
@@ -115,18 +93,10 @@ public class NewsJDBCDao implements News_interface {
 				NewsVO newsVO = new NewsVO(newsId, queryTitle, content, createDate, img);
 				ls.add(newsVO);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		} 
 		return ls;
 	}
 
@@ -134,24 +104,17 @@ public class NewsJDBCDao implements News_interface {
 	public boolean updateNewsById(NewsVO obj) {
 		int count = 0;
 		String sql = "update NEWS set title=?,content=?,img=? where news_id=?;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setString(1, obj.getTitle());
 			prep.setString(2, obj.getContent());
 			prep.setString(3, obj.getImg());
 			prep.setInt(4, obj.getNewsId());
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return count != 0;
 	}
@@ -160,20 +123,13 @@ public class NewsJDBCDao implements News_interface {
 	public boolean deleteNewsById(Integer newsId) {
 		int count = 0;
 		String sql = "delete from NEWS where news_id=?";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setInt(1, newsId);
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return count != 0;
 	}

@@ -10,12 +10,12 @@ public class NewsJDBCDaoDemo {
 	public static void main(String[] args) {
 		NewsJDBCDao newsJDBCDao=new NewsJDBCDao();
 		//新增一筆資料
-//		NewsVO newsVO=new NewsVO(null, "test3", "This is the third context.", null, "C:\\Users\\Tibame_T14\\Desktop\\items\\FC_Bayern.png");
+//		NewsVO newsVO=new NewsVO(null, "test4", "This is the fourth context.", null, "C:\\Users\\Tibame_T14\\Desktop\\items\\FC_Bayern.png");
 //		newsJDBCDao.insertNews(newsVO);
 		
 		//修改一筆資料
-//		NewsVO newsVO=new NewsVO(1, "test", "This is the first first context.", null, "C:\\Users\\Tibame_T14\\Desktop\\items\\FC_Bayern.png");
-//		newsJDBCDao.updateNewsById(newsVO);
+//		NewsVO newsVO1=new NewsVO(1, "test", "This is the first first context.", null, "C:\\Users\\Tibame_T14\\Desktop\\items\\FC_Bayern.png");
+//		newsJDBCDao.updateNewsById(newsVO1);
 		
 		//藉由Id查詢一筆資料
 //		Integer newId=2;

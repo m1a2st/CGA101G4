@@ -11,13 +11,14 @@ import java.util.List;
 import com.DbHelper.Dbhelper;
 
 public class ThemeJDBCDao implements Theme_interface {
-	private static Connection conn = Dbhelper.getConnection();
+	 
 
 	@Override
 	public boolean insertTheme(ThemeVO obj) {
 		int count = 0;
 		String sql = "insert into THEME(title,content,img) values(?,?,?)";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setString(1, obj.getTitle());
 			prep.setString(2, obj.getContent());
 			prep.setString(3, obj.getImg());
@@ -26,14 +27,6 @@ public class ThemeJDBCDao implements Theme_interface {
 			System.out.println("success " + count);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return count != 0;
 	}
@@ -42,7 +35,8 @@ public class ThemeJDBCDao implements Theme_interface {
 	public List<ThemeVO> queryAllTheme() {
 		List<ThemeVO> ls = new ArrayList<ThemeVO>();
 		String sql = "select theme_id,title,content,create_date,img from THEME;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
 				Integer themeId = (Integer) rs.getInt("theme_id");
@@ -56,14 +50,6 @@ public class ThemeJDBCDao implements Theme_interface {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return ls;
 	}
@@ -72,7 +58,8 @@ public class ThemeJDBCDao implements Theme_interface {
 	public ThemeVO queryThemeById(Integer themeId) {
 		ThemeVO themeVO = new ThemeVO();
 		String sql = "select theme_id,title,content,create_date,img from THEME where theme_id=?;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setInt(1, themeId);
 			ResultSet rs = prep.executeQuery();
 			if (rs.next()) {
@@ -85,14 +72,6 @@ public class ThemeJDBCDao implements Theme_interface {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return themeVO;
 	}
@@ -101,7 +80,8 @@ public class ThemeJDBCDao implements Theme_interface {
 	public List<ThemeVO> queryThemeByTitle(String title) {
 		List<ThemeVO> ls = new ArrayList<ThemeVO>();
 		String sql = "select theme_id,title,content,create_date,img from THEME where title like ?;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setString(1, "%" + title + "%");
 			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
@@ -115,14 +95,6 @@ public class ThemeJDBCDao implements Theme_interface {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return ls;
 	}
@@ -131,7 +103,8 @@ public class ThemeJDBCDao implements Theme_interface {
 	public boolean updateThemeById(ThemeVO obj) {
 		int count = 0;
 		String sql = "update THEME set title=?,content=?,img=? where theme_id=?;";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setString(1, obj.getTitle());
 			prep.setString(2, obj.getContent());
 			prep.setString(3, obj.getImg());
@@ -140,14 +113,6 @@ public class ThemeJDBCDao implements Theme_interface {
 			System.out.println("success " + count);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return count != 0;
 	}
@@ -156,20 +121,13 @@ public class ThemeJDBCDao implements Theme_interface {
 	public boolean deleteThemeById(Integer themeId) {
 		int count = 0;
 		String sql = "delete from THEME where theme_id=?";
-		try (PreparedStatement prep = conn.prepareStatement(sql)) {
+		try (Connection conn = Dbhelper.getConnection();
+				PreparedStatement prep = conn.prepareStatement(sql)) {
 			prep.setInt(1, themeId);
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 		return count != 0;
 	}
