@@ -24,9 +24,16 @@ public class ThemeJDBCDao implements Theme_interface {
 			prep.addBatch();
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return count != 0;
 	}
@@ -46,9 +53,17 @@ public class ThemeJDBCDao implements Theme_interface {
 				ThemeVO themeVO = new ThemeVO(themeId, title, content, createDate, img);
 				ls.add(themeVO);
 			}
-			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return ls;
 	}
@@ -67,9 +82,17 @@ public class ThemeJDBCDao implements Theme_interface {
 				themeVO.setDate(rs.getObject("create_date", Timestamp.class));
 				themeVO.setImg(rs.getString("img"));
 			}
-			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return themeVO;
 	}
@@ -90,9 +113,16 @@ public class ThemeJDBCDao implements Theme_interface {
 				ThemeVO themeVO = new ThemeVO(themeId, queryTitle, content, createDate, img);
 				ls.add(themeVO);
 			}
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return ls;
 	}
@@ -108,9 +138,16 @@ public class ThemeJDBCDao implements Theme_interface {
 			prep.setInt(4, obj.getThemeId());
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return count != 0;
 	}
@@ -123,9 +160,16 @@ public class ThemeJDBCDao implements Theme_interface {
 			prep.setInt(1, themeId);
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return count != 0;
 	}

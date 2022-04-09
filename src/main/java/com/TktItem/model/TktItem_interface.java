@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface TktItem_interface {
 	//新增一筆票券訂單明細
-	public int insertTktItem(TktItemVO tktItem);
+	public int insertTktItem(TktItemVO obj);
 	//根據訂單Id取出所有的票券訂單明細
 	public List<TktItemVO> queryTktItemByTktId(Integer tktId);
 	//根據票券訂單id來更改票券訂單明細的狀態

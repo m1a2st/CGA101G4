@@ -24,9 +24,16 @@ public class NewsJDBCDao implements News_interface {
 			prep.addBatch();
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return count != 0;
 	}
@@ -46,9 +53,17 @@ public class NewsJDBCDao implements News_interface {
 				NewsVO newsVO = new NewsVO(newsId, title, content, createDate, img);
 				ls.add(newsVO);
 			}
-			conn.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return ls;
 	}
@@ -68,10 +83,18 @@ public class NewsJDBCDao implements News_interface {
 				;
 				newsVO.setImg(rs.getString("img"));
 			}
-			conn.close();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return newsVO;
 	}
@@ -92,9 +115,17 @@ public class NewsJDBCDao implements News_interface {
 				NewsVO newsVO = new NewsVO(newsId, queryTitle, content, createDate, img);
 				ls.add(newsVO);
 			}
-			conn.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return ls;
 	}
@@ -110,9 +141,17 @@ public class NewsJDBCDao implements News_interface {
 			prep.setInt(4, obj.getNewsId());
 			count = prep.executeUpdate();
 			System.out.println("success " + count);
-			conn.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return count != 0;
 	}
@@ -127,6 +166,14 @@ public class NewsJDBCDao implements News_interface {
 			System.out.println("success " + count);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return count != 0;
 	}
