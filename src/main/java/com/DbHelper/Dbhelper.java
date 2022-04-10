@@ -2,6 +2,7 @@ package com.DbHelper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 	/**
 	 * 專門用於提供資料庫連線的類
 	 */
@@ -36,5 +37,16 @@ public class Dbhelper {
 			}
 		}
 		return conn;
+	}
+	
+	public void close(Connection conn) {
+		if(conn!=null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
