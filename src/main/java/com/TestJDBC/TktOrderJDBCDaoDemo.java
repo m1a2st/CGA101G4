@@ -15,8 +15,8 @@ public class TktOrderJDBCDaoDemo {
 		// 穝糤掸布ㄩ璹虫(x)
 		//java.lang.NullPointerException
 		//璶琌Coupon_id
-//		TktOrderVO tktOrderVO = new TktOrderVO(null, 10015, 420, null, 420, null, "http://yahoo.com.tw");
-//		tktOrderJDBCDao.insertTktOrder(tktOrderVO);
+		TktOrderVO tktOrderVO = new TktOrderVO(null, 10015, 420, null, 420, null, "http://yahoo.com.tw");
+		tktOrderJDBCDao.insertTktOrder(tktOrderVO);
 		
 		
 		//琩高场布ㄩ璹虫

@@ -4,8 +4,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface TktOrder_interface {
-	//新增一筆票券訂單
+	//新增一筆票券訂單(有使用優惠券)
 	public boolean insertTktOrder(TktOrderVO obj);
+	//新增一筆票券訂單(未使用優惠券)
+//	public boolean insertTktOrderNoCoupon(TktOrderVO obj);
 	//查詢全部票券訂單
 	public List<TktOrderVO> queryAllTktOrder();
 	//根據會員Id查詢票券訂單
